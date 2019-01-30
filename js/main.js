@@ -8,11 +8,23 @@ let isInteger,
 
 // TODO: Initialize a variable `isInteger` to use as a control value for the
 // `while` loop. Set the initial value to `false`.
+isInteger = false;
 
 // TODO: Create a `while` loop so user will be prompted to enter a number until
 // they enter a good number. This loop should be controlled by a conditional
 // expression that looks at the value of `isSafeInteger`. When `isSafeInteger`
 // becomes `true`, the `while` loop should stop looping.
+
+while (!isInteger) {
+    let input = window.prompt('Enter a number greater than 0:');
+    if (input === null) break;
+    if (input.indexOf('.') < 0) {
+        maxNumber = Number.parseInt(input);
+        isInteger = Number.isSafeInteger(maxNumber) && maxNumber > 0;
+    }
+
+}
+// console.log ("maxNumber",maxNumber);
 
 // TODO: Inside `while` loop prompt the user for the `maxNumber` value.
 
@@ -23,8 +35,26 @@ let isInteger,
 // `isInteger` so the `while` loop stops looping.
 
 // TODO: Initialize the `fbResults` variable to an empty Array
+fbResults = [];
+
 
 // TODO: Create a `for` loop that will execute the `maxNumber` of times.
+for (let i = 1; i <= maxNumber; i++) {
+    let outputString = '';
+    if (i % 3 === 0) {
+        outputString += "fizz";
+    }
+    if (i % 5 === 0) {
+        outputString += "buzz";
+    }
+    //   if (i % 15) {
+    //       outputString += "fizzbuzz";
+    //  }
+    if (outputString.length === 0) {
+        outputString = i;
+    }
+    fbResults.push(outputString);
+}
 
 // TODO: Create logic inside the `for` loop to calculate FizzBuzz.  This will
 // require the use of several conditional statements that use the `%` operator.
@@ -35,6 +65,11 @@ let isInteger,
 
 // TODO: Use a `for ... of` loop to concatenate the values from `fbResults`
 // into the variable `fbText`.
+fbText = '';
+
+for (let value of fbResults){
+    fbText += value + '\n';
+}
 
 
 ///////////////////////////////////////////////////////////////////////
